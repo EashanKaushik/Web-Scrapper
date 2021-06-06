@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+<div class="d-md-flex h-md-100 align-items-center">
+	<div class="col-md-6 p-0 bg-indigo h-md-100">
+		<h1 class="left-padding">Enter Details</h1><br>
+		<form action="#" method="post" enctype="multipart/form-data" class="left-padding">
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control col-md-6" name="url" placeholder="Enter URL" required>
+			</div>
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control col-md-6" name="extract" placeholder="Enter Tags and Their Class Names" required>
+			</div>
+			<small id="emailHelp" class="form-text text-muted col-md-6">
+				Example: div class car-name,p id car-desc,h5,h3 class price-car <br>
+				Note: No whitespaces between commas
+			</small><br><br>
+			<div class="form-group form-check col-md-6">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+				<label class="form-check-label" for="exampleCheck1">I have Checked robots.txt</label>
+				<small id="emailHelp" class="form-text text-muted">
+					Check if Scrapper can scrap the data from robots.txt file <br>
+					Example: https://www.website_name.com/robots.txt
+				</small>
+			</div>
+			<br><br>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</fosrm>
+	</div>
+	<div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+
+		<h2>Instructions:</h2>
+		<p class="font-weight-light"><b>Step 1:</b> Right Click on Web Page and select Inspect.</p>
+		<p class="font-weight-light"><b>Step 2:</b> Once the inspect window opens try to find the tags that enclose the data you need.</p>
+		<p class="font-weight-light"><b>Step 3:</b> Identify the tags which encloses the data you need. Data in most cases will be enclosed by div, p, a, h1, or span tags.</p>
+		<p class="font-weight-light"><b>Step 4:</b> Once the tag has been found, locate its identifier either it will be a class, id or itemprop.</p>
+		<p class="font-weight-normal">Example</p>
+		<img src="{{url_for('static',filename='images/webscrapper-instruction-1.jpg')}}" alt="" >
+		<p class="font-weight-normal">Price is enclosed in tag h3 and has class identifier _6KkG6.</p>
+		<img src="{{url_for('static',filename='images/webscrapper-instruction-2.jpg')}}" alt="" >
+		<p class="font-weight-normal">Fuel Type is enclosed in span and has itemprop identifier name.</p>
+		<p class="font-weight-light"><b>Step 5:</b> Pass 'h3 class _6KkG6,span itemprop name' in the Enter tags field. </p>
+
+	</div>
+</div>
+{% if dataupload %}
+<br><br>
+<a href=" {{ url_for('download_file_web')}}">Download</a>
+{% endif %}
+{% endblock %}

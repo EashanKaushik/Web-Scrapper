@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+
+<div class="container-sm left-padding">
+	<h1>Enter Details</h1><br>
+	<form action="#" method="post" enctype="multipart/form-data">
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control col-md-6" name="api" placeholder="Enter API" required>
+		</div>
+		<br>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+{% if dataupload %}
+<br><br>
+<!-- <h1>{{ api }}</h1> -->
+<a href=" {{ url_for('download_file_format')}}">Download</a>
+{% endif %}
+{% endblock %}

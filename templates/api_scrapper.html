@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+
+<div class="d-md-flex h-md-100 align-items-center">
+	<div class="col-md-6 p-0 bg-indigo h-md-100">
+		<h1 class="left-padding">Enter Details</h1><br>
+		<form action="#" method="post" enctype="multipart/form-data" class="left-padding">
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control col-md-6" name="api" placeholder="Enter API" required>
+			</div>
+			<br>
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control col-md-6" name="contents" placeholder="Enter Content" required>
+			</div>
+			<small id="emailHelp" class="form-text text-muted col-md-6">
+				Give Direction to Content <br>
+				Example: data->content
+			</small><br>
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control col-md-6" name="tags" placeholder="Enter Tag" required>
+			</div>
+			<small id="emailHelp" class="form-text text-muted col-md-6">
+				Input the tags in comma seperated format <br>
+				Example: carname,price,kms <br>
+				Note: No whitespaces between commas
+			</small>
+			<br>
+			<div class="form-group form-check col-md-6">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+				<label class="form-check-label" for="exampleCheck1">I have Checked robots.txt</label>
+				<small id="emailHelp" class="form-text text-muted">
+					Check if Scrapper can scrap the data from robots.txt file <br>
+					Example: https://www.website_name.com/robots.txt
+				</small>
+			</div>
+			<br>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+	<div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+		<h2>Instructions:</h2>
+		<p class="font-weight-light"><b>Step 1:</b> Use API format to get the format of JSON file returned by a particular API.</p>
+		<p class="font-weight-light"><b>Step 2:</b> Inspect the data and get identify the main data from JSON. In the below case main data is in 'content'. Therefore, pass 'data->content' into the Content field.</p>
+		<img src="{{url_for('static',filename='images/api-scrapper.jpg')}}" alt="" width="800" height="350">
+		<p class="font-weight-light"><b>Step 3:</b> Identify the tags which encloses the data you need.</p>
+		<p class="font-weight-light"><b>Step 4:</b> Enter the tags in Enter Tag field.</p>
+	</div>
+</div>
+{% if dataupload %}
+<br><br>
+<a href=" {{ url_for('download_file_api')}}">Download</a>
+{% endif %}
+{% endblock %}
